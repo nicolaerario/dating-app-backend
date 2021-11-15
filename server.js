@@ -6,6 +6,14 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 8001;
+const connection_url = process.env.CONNECTION_URL;
+
+// DB Config
+mongoose.connect(connection_url, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 //API endpoints
 app.get("/", (req, res) => res.status(200).send("Hello Dating App"));
